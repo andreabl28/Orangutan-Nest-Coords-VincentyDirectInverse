@@ -2,17 +2,13 @@
 # Vincenty Direct geodetic computation function (Andre Verville)
 # generates latitude, longitude and inverse bearing
 # from a given point in lat lon, bearing and distance
-# Formulas from my Bachelor Degrees thesis, Laval University, 1978
 # Credits: Thaddeus Vincenty, Survey Review, Vol.XXIII, No. 176, April 1975
 # https://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf
 # -------------------------------------------------------------------------
 # Test Camp Senang
 
-#hello
-
 import math
 # The Python ATAN2 function is one of the Python Math function which is used to returns the angle (in radians) from the X -Axis to the specified point (y, x).
-
 # myradians = math.atan2(targetY-startY, targetX-startX)
 # start is the center of the image (3000,2000)
 myradians = math.atan2(1420 - 2000, 1583.3-3000)
@@ -24,8 +20,8 @@ print(mydegrees)
 # or 1634.017 GSD: 3.2883
 lat1deg = -1.220344
 lon1deg = 110.103976
-dist = 1634.017
-brg12deg = 255
+dist = 3.2883
+brg12deg = mydegrees
 
 
 def vincentydirect(lat1deg, lon1deg, brg12deg, dist):
@@ -84,4 +80,4 @@ def vincentydirect(lat1deg, lon1deg, brg12deg, dist):
     return lat2deg, lon2deg, brg21deg
 
 
-print(vincentydirect(lat1deg, lon1deg, brg12deg))
+print(vincentydirect(lat1deg, lon1deg, brg12deg, dist))
