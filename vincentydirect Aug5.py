@@ -7,6 +7,7 @@
 # -------------------------------------------------------------------------
 # Test Camp Senang
 
+#The coordinates of any pixel of interest was determined by calculating the bearing from the pixel of interest to the centre of each image,
 import math
 # The Python ATAN2 function is one of the Python Math function which is used to returns the angle (in radians) from the X -Axis to the specified point (y, x).
 # myradians = math.atan2(targetY-startY, targetX-startX)
@@ -17,10 +18,10 @@ mydegrees = math.degrees(myradians)
 print(mydegrees)
 
 
-# or 1634.017 GSD: 3.2883
+# Ground Surface Distance: 3.2883
 lat1deg = -1.220344
 lon1deg = 110.103976
-dist = 3.2883
+dist = 3.863792
 brg12deg = mydegrees
 
 
