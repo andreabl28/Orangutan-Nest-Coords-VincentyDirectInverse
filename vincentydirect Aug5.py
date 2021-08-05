@@ -6,24 +6,25 @@
 # Credits: Thaddeus Vincenty, Survey Review, Vol.XXIII, No. 176, April 1975
 # https://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf
 # -------------------------------------------------------------------------
-#Test Camp Senang
+# Test Camp Senang
 
 import math
-#The Python ATAN2 function is one of the Python Math function which is used to returns the angle (in radians) from the X -Axis to the specified point (y, x).
+# The Python ATAN2 function is one of the Python Math function which is used to returns the angle (in radians) from the X -Axis to the specified point (y, x).
 
 # myradians = math.atan2(targetY-startY, targetX-startX)
-#start is the center of the image (3000,2000)
-myradians=math.atan2(1420 - 2000, 1583.3-3000)
-#convert from radians to degrees
+# start is the center of the image (3000,2000)
+myradians = math.atan2(1420 - 2000, 1583.3-3000)
+# convert from radians to degrees
 mydegrees = math.degrees(myradians)
 print(mydegrees)
 
 
-#or 1634.017 GSD: 3.2883 
+# or 1634.017 GSD: 3.2883
 lat1deg = -1.220344
 lon1deg = 110.103976
 dist = 1634.017
 brg12deg = 255
+
 
 def vincentydirect(lat1deg, lon1deg, brg12deg, dist):
     import math
@@ -31,7 +32,7 @@ def vincentydirect(lat1deg, lon1deg, brg12deg, dist):
         dist = abs(dist)
         brg12deg = brg12deg + 180
     brg12deg = brg12deg % 360  # make sure it does not exceed 360 degrees
-    a, b = 6378137.0, 6356752.3141 # GRS80 ellipsoid, edit as required
+    a, b = 6378137.0, 6356752.3141  # GRS80 ellipsoid, edit as required
 
     lat1rad = math.radians(lat1deg)
     lon1rad = math.radians(lon1deg)
@@ -52,7 +53,7 @@ def vincentydirect(lat1deg, lon1deg, brg12deg, dist):
     sinmu = math.sin(mu)
     cosmu = math.cos(mu)
 
-    while 1: # iterative section to compute X2, Y2 and Z2 while minimizing h
+    while 1:  # iterative section to compute X2, Y2 and Z2 while minimizing h
         X2 = X1 - d12 * (coslat1 * math.sin(mu) + sinlat1 * cosbrg12 * cosmu)
         Y2 = d12 * sinbrg12 * math.cos(mu)
         Z2 = Z1 + d12 * (coslat1 * cosbrg12 * math.cos(mu) - sinlat1 * sinmu)
@@ -79,5 +80,6 @@ def vincentydirect(lat1deg, lon1deg, brg12deg, dist):
         brg21deg = brg21deg + 180
         brg21deg = brg21deg % 360
     return lat2deg, lon2deg, brg21deg
+
 
 print(vincentydirect(lat1deg, lon1deg, brg12deg))
