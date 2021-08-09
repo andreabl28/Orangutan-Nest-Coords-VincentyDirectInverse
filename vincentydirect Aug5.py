@@ -12,17 +12,22 @@ import math
 # The Python ATAN2 function is one of the Python Math function which is used to returns the angle (in radians) from the X -Axis to the specified point (y, x).
 # myradians = math.atan2(targetY-startY, targetX-startX)
 # start is the center of the image (3000,2000), image is 6000x4000pixels
-myradians = math.atan2(4000-2000, 6000 -3000)
+# enter the y and x coordinates of the nest from R
+myradians = math.atan2(1554-2000, 1424-3000)
 # convert from radians to degrees
 mydegrees = math.degrees(myradians)
-#print(mydegrees)
+#assuming this transect was conducted West to East or East to West - adjusted for 270 degrees
+#enter the degrees to adjust by
+mydegrees = 270+mydegrees
+print(mydegrees)
 
 
-# Ground Surface Distance: 3.2883
+# Ground Surface Distance: 3.86
 # enter coordinates for the center of the drone image
 lat1deg = -1.220344
 lon1deg = 110.103976
-dist = 3.2883
+#enter dist_m here
+dist = 42.02302
 brg12deg = mydegrees
 
 
@@ -83,3 +88,5 @@ def vincentydirect(lat1deg, lon1deg, brg12deg, dist):
 
 
 print(vincentydirect(lat1deg, lon1deg, brg12deg, dist))
+
+
